@@ -17,15 +17,16 @@ headers = {
   'x-api-key': x_api_key
 }
 
-for doc_url in tqdm(corpus_jsons[:2]):
+for i, doc_url in tqdm(enumerate(corpus_jsons[:300])):
     doc = json.load(open(doc_url, "r"))
-    vectar_json_list = docStructure.convert_law_list_to_vectara_json_list(doc)
-    assert len(doc) == len(vectar_json_list)
-    for temp in tqdm(vectar_json_list):
-        json.dump(temp, open(f"temp.json", "w"))
-        files=[
-            ('file',('file',open('temp.json','rb'),'application/octet-stream'))
-            ]
-        response = requests.request("POST", url, headers=headers, data=payload, files=files)
-        if response.status_code !=200:
-            print(response, response.text)
+    vectar_json_list = docStructure.convert_law_list_to_vectara_json_list(doc, i)
+    # assert len(doc) == len(vectar_json_list)
+    # for temp in tqdm(vectar_json_list):
+    #     json.dump(temp, open(f"temp.json", "w"))
+    #     files=[
+    #         ('file',('file',open('temp.json','rb'),'application/octet-stream'))
+    #         ]
+    #     response = requests.request("POST", url, headers=headers, data=payload, files=files)
+    #     if response.status_code !=200:
+    #         print(response, response.text)
+    #         break

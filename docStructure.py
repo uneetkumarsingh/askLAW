@@ -27,10 +27,10 @@ def convert_law_json_to_vectara_json(law_json):
     })
     return vectara_json
 
-def convert_law_list_to_vectara_json_list(law_json_list):
+def convert_law_list_to_vectara_json_list(law_json_list, j = 0):
     vectara_json_list  = []
-    for i, doc_law in enumerate(tqdm(law_json_list[:100])):
+    for i, doc_law in enumerate(tqdm(law_json_list[:])):
         vector_json = convert_law_json_to_vectara_json(doc_law)
-        json.dump(vector_json, open(f"../vectara/{i}.json", "w"))
+        json.dump(vector_json, open(f"../vectara2/{j}_{i}.json", "w"))
         vectara_json_list.append(vector_json)
     return vectara_json_list
