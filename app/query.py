@@ -9,10 +9,10 @@ import os
 from dotenv import dotenv_values
 config = dotenv_values(".env")
 def load_credentials():
-    customer_id = config.get('CUSTOMER_ID')
-    corpus_id = config.get('CORPUS_ID')
-    serving_endpoint = config.get('ENDPOINT')
-    api_key = config.get('API_KEY')
+    customer_id = os.environ.get('CUSTOMER_ID')
+    corpus_id = os.environ.get('CORPUS_ID')
+    serving_endpoint = os.environ.get('ENDPOINT')
+    api_key = os.environ.get('API_KEY')
     return customer_id, corpus_id, serving_endpoint, api_key
 
 customer_id, corpus_id, serving_endpoint, api_key = load_credentials()
