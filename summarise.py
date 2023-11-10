@@ -2,11 +2,12 @@ import requests
 import json
 import glob
 from tqdm import tqdm
+import os
 url = "https://api.endpoints.anyscale.com/v1/chat/completions"
 
 headers = {
   'Content-Type': 'application/json',
-  'Authorization': 'Bearer esecret_hanjm9lbkdr62f7csy3fem5fvy'
+  'Authorization': f'Bearer {os.environ.get("TOKEN")}'
 }
 
 cases = glob.glob("/Users/uneet.singh1/Documents/learning_extra/vectara/vectara2/*.json")
